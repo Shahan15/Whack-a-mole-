@@ -1,0 +1,22 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.gameboard {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.mole {
+    height: 10.625rem; /* i wanted my picture to be 170px but rem is more responsive therefoer 170/16*/ 
+    width: auto;
+}
+
+.hole {
+    height: 7rem; 
+    width: auto;
+}
