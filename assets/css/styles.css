@@ -2,21 +2,72 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    background-color: white;
 }
 
-.gameboard {
+body {
+    background-image: url(/assets/images/garden.png);
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+}
+
+
+#gameboard {
+    position: absolute;
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    width: 1100px; 
+    height: 650px; 
+    background: linear-gradient(to bottom, #fff8b5, #b6d7a8);
+    border: 3px solid black; 
+    border-radius: 15px; 
+    z-index: -1;
+}
+
+
+.toprow,.bottomrow {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction:row;
+}
+
+.toprow {
+    gap: 50px;
+    margin-left: 6.5rem;
+}
+
+.bottomrow {
+    margin-left: 16rem;
+    gap:120px;
+}
+
+.pair {
+    position: relative; 
+    width: 9rem; 
+    height: 9rem; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:6rem;
 }
 
 
-.mole {
-    height: 10.625rem; /* i wanted my picture to be 170px but rem is more responsive therefoer 170/16*/ 
-    width: auto;
-}
-
-.hole {
+#mole {
+    position: absolute;
     height: 7rem; 
     width: auto;
+    margin-top: 6rem;
+    margin-left: 6rem;
+    z-index: 0;
+    background: none;
+}
+
+#hole {
+    position: absolute;
+    height: 6rem; 
+    width: auto;
+    margin-top: 14rem;
+    margin-left: 6.25rem;
+    z-index: 1;
+    background: none;
 }
