@@ -138,7 +138,7 @@ body {
 }
 
 
-#mole {
+.mole {
     position: absolute;
     height: 7.5rem; 
     width: auto;
@@ -146,6 +146,7 @@ body {
     margin-left: 6rem;
     z-index: 0;
     background: none;
+    
 }
 
 /*hole styles*/ 
