@@ -146,11 +146,11 @@ body {
     margin-left: 6rem;
     z-index: 0;
     background: none;
-    
+    transform: translateY(60px);
 }
 
 /*hole styles*/ 
-#hole {
+.hole {
     position: absolute;
     height: 6rem; 
     width: auto;
