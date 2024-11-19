@@ -28,8 +28,8 @@
     </div>
 
     <!--Score Counter-->
-    <div id="score">
-        <h2>score: 0</h2>
+    <div >
+        <h2 id="scoretext">score: <span id="scorenumber">0</span></h2>
     </div>
 
     <!--play button-->
@@ -39,13 +39,13 @@
 
     <!--difficulty levels-->
     <div id="difficulty">
-        <button onclick="easy()" class="difficultyclass">
+        <button onclick="easy()" class="difficultyclass" id="easy">
             Easy
         </button>
-        <button onclick="medium()" class="difficultyclass">
+        <button onclick="medium()" class="difficultyclass" id="medium">
             Medium
         </button>
-        <button onclick="hard()" class="difficultyclass">
+        <button onclick="hard()" class="difficultyclass" id="hard">
             Hard
         </button>
     </div>

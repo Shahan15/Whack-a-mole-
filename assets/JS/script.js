@@ -5,6 +5,26 @@ moleids.forEach((id) => {
     let mole = document.getElementById(id);
     mole.addEventListener("click",molehidingClicked);
 })
+
+
+document.getElementById("easy").addEventListener("click", () => {
+    if(confirm("are you sure you would like to begin easy mode?")){
+        resetScore()
+        easy()
+    }
+})
+document.getElementById("medium").addEventListener("click", () => {
+    if(confirm("are you sure you would like to begin medium mode?")){
+        resetScore()
+        medium()
+    }
+})
+document.getElementById("hard").addEventListener("click", () => {
+    if(confirm("are you sure you would like to begin hard mode?")){
+        resetScore()
+        hard()
+    }
+})
 /**
  * Mole moving down when clicked to mimic popping up and down
  */
@@ -12,16 +32,22 @@ function molehidingClicked (event) {
     let clickedmole = event.target; // Get the clicked mole
     clickedmole.style.transform = "translateY(50px)"; // Hide the mole
     clickedmole.style.transition = "transform 0.2s ease";
-    clickedmole.setAttribute("data-clicked","true")
-    score()
+    clickedmole.setAttribute("data-clicked","true");
+    Updatescore();
 }
 
 /**
  * score counter 
  */
-function score () {
-    let score=0
+function Updatescore () {
+    let score = parseInt(document.getElementById('scorenumber').innerHTML );
+    document.getElementById('scorenumber').innerText = score + 1 ;
     
+}
+
+function resetScore () { 
+    let score = 0;
+    document.getElementById('scorenumber').innerText = score;
 }
 
 /**
@@ -52,7 +78,7 @@ function playAgain() {
                 htmlMoleId.style.transform = "translateY(40px)"; // Move mole down
             }
         }, 1400); // Timeout before moving mole back down
-    }, 2000); //pops up every 2 seconds
+    }, 2500); //pops up every 2 seconds
 }
 
 
@@ -102,8 +128,8 @@ function hard () {
             if (clickedState === "false") {
                 htmlMoleId.style.transform = "translateY(40px)"; 
             }
-        }, 600); // Timeout before moving mole back down
-    }, 800); // Repeat every 800ms
+        }, 800); // Timeout before moving mole back down
+    }, 900); // Repeat every 900ms
 }
 
 

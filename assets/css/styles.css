@@ -19,7 +19,7 @@ body {
 */ 
 
 /*score counter*/ 
-#score {
+#scoretext {
     position: absolute;
     justify-content: center;
     top: 50%;
@@ -27,12 +27,12 @@ body {
     transform: translate(-50%, -50%); /* Centers the element vertically and horizontally */
     margin-top: 50px;
     margin-right: 20px;
-    font-size: 1.25rem;
+    font-size: 1.55rem;
     font-weight: bold;
     font-family: 'Comic Sans MS', cursive, sans-serif;
     color: #fff;
     background: linear-gradient(to right, #4CAF50, #8BC34A); /* Green gradient */
-    padding: 10px 12px;
+    padding: 15px 20px;
     border-radius: 20px;
     text-align: center;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
