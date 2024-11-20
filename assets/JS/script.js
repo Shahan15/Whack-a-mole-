@@ -7,24 +7,39 @@ moleids.forEach((id) => {
 })
 
 
-document.getElementById("easy").addEventListener("click", () => {
-    if(confirm("are you sure you would like to begin easy mode?")){
-        resetScore()
-        easy()
-    }
-})
-document.getElementById("medium").addEventListener("click", () => {
-    if(confirm("are you sure you would like to begin medium mode?")){
-        resetScore()
-        medium()
-    }
-})
-document.getElementById("hard").addEventListener("click", () => {
-    if(confirm("are you sure you would like to begin hard mode?")){
-        resetScore()
-        hard()
-    }
-})
+function easyhandler () {
+    document.getElementById("easy").addEventListener("click", () => {
+        if(confirm("are you sure you would like to begin easy mode?")){
+            setTimeout(()=>{
+                resetScore()
+                easy()
+            },3000)//function exectues in 3 seconds.
+        } 
+    });
+}
+
+function mediumhandler () {
+    document.getElementById("medium").addEventListener("click", () => {
+        if(confirm("are you sure you would like to begin medium mode?")){
+            setTimeout( () => {
+                resetScore();
+                medium();
+            },3000);
+        } 
+    });
+}
+
+function hardhandler () {
+    document.getElementById("hard").addEventListener("click", () => {
+        if(confirm("are you sure you would like to begin hard mode?")){
+            setTimeout(()=>{
+                resetScore()
+                hard()
+            },3000)
+        } 
+    });
+}
+
 /**
  * Mole moving down when clicked to mimic popping up and down
  */
@@ -78,16 +93,14 @@ function playAgain() {
                 htmlMoleId.style.transform = "translateY(40px)"; // Move mole down
             }
         }, 1400); // Timeout before moving mole back down
-    }, 2500); //pops up every 2 seconds
+    }, 2500); //pops up every 2500ms
 }
-
 
 /**
  * Medium level function
  */
 function medium () {
     setInterval(() => {
-        
         let randomIndex = Math.floor(Math.random() * moleids.length);
         let randomMole = moleids[randomIndex];
         let htmlMoleId = document.getElementById(randomMole);
@@ -103,15 +116,15 @@ function medium () {
             if (clickedState === "false") {
                 htmlMoleId.style.transform = "translateY(40px)";
             }
-        }, 800); 
-    }, 1000); // Repeat every 1 second
+        }, 1300); 
+    }, 1600); // Repeat every 1600ms
 }
 
 /**
  * Hard level function
  */
 function hard () {
-    setInterval(() => {
+    let hardsetinterval=setInterval(() => {
  
         let randomIndex = Math.floor(Math.random() * moleids.length);
         let randomMole = moleids[randomIndex];
@@ -128,8 +141,8 @@ function hard () {
             if (clickedState === "false") {
                 htmlMoleId.style.transform = "translateY(40px)"; 
             }
-        }, 800); // Timeout before moving mole back down
-    }, 900); // Repeat every 900ms
+        }, 1000); // Timeout before moving mole back down
+    }, 1200); // Repeat every 1200ms
 }
 
 
