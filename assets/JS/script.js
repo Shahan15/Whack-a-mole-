@@ -122,9 +122,14 @@ const startGame = (intervalDuration, popUpDuration) => {
 };
 
 
-
-
-
+/**
+ * begin game 
+ */
+const initialiseGame = () => {
+    initialiseMoles();  // Add click event listeners to moles
+    modelistners();  // Add click event listeners to mode buttons
+    resetGame();  // Reset the game state to start fresh
+}
 
 /**
  * function to reset the game 
@@ -146,3 +151,5 @@ const resetGame = () => {
         mole.setAttribute('data-clicked', 'false'); // Reset clicked state
     });
 };
+
+initialiseGame()
