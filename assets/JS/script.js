@@ -1,16 +1,8 @@
-/*goes through array of moleids and loops through them and adds 
-eventlisteners for all of them */
+/*global variables*/
 const moleids = ['mole1','mole2','mole3','mole4','mole5'];
 let activeInterval = null; 
 let countdownInterval = null;
 let remainingTime = 30; // Default game time in seconds
-
-
-moleids.forEach((id) => {
-    let mole = document.getElementById(id);
-    mole.addEventListener("click",molehidingClicked);
-})
-
 
 //instead of calling so many elements we can store that call in a single object. cleaner 
 const elements = {
@@ -20,6 +12,16 @@ const elements = {
     mediumButton: document.getElementById('medium'),
     hardButton: document.getElementById('hard'),
 };
+
+
+/**
+ * assigns easy buttons event listners 
+ */
+const modelistners = () =>  {
+    elements.easyButton.addEventListener('click', () => setupGameMode('easy'));
+    elements.mediumButton.addEventListener('click', () => setupGameMode('medium'));
+    elements.hardButton.addEventListener('click', () => setupGameMode('hard'));
+}
 
 /*instead of having multiple handlers doing the same thing i.e. initialising easy mode,medium and hard. 
 we just have a single function -->  gamemode (mode).
@@ -44,17 +46,6 @@ const gamemode = (mode) => {
 }
 
 /**
- * Mole moving down when clicked to mimic popping up and down
- */
-function molehidingClicked (event) { 
-    let clickedmole = event.target; // Get the clicked mole
-    clickedmole.style.transform = "translateY(50px)"; // Hide the mole
-    clickedmole.style.transition = "transform 0.2s ease";
-    clickedmole.setAttribute("data-clicked","true");
-    Updatescore();
-}
-
-/**
  * score counter 
  */
 function Updatescore () {
@@ -64,12 +55,18 @@ function Updatescore () {
 }
 
 
+/** 
+ * Time function 
+*/
 const time = (seconds) => {
     const mins = Math.floor(seconds/60);
     const secs = seconds % 60;
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
 }
 
+/** 
+ * countdown starter 
+*/
 const startTimer = (callBack) => {
     countdownInterval = setInterval(() => {
         if (remainingTime > 0) {
@@ -83,13 +80,26 @@ const startTimer = (callBack) => {
 };//when the timer ends we call the function that has been passed in as a parameter i.e. resetGame()
 
 
+/**
+ * Initialise mole click listeners, assigns event listeners for each mole 
+ */
+const initialiseMoles = () => {
+    moleIds.forEach((id) => {
+        const mole = document.getElementById(id);
+        mole.addEventListener('click', (event) => {
+            if (event.target.getAttribute('data-clicked') === 'false') {
+                event.target.style.transform = 'translateY(50px)'; // Hide mole when clicked
+                event.target.setAttribute('data-clicked', 'true'); // Mark as clicked
+                Updatescore();  // Increment the score
+            }
+        });
+    });
+};
 
 
-
-
-
-
-// Function to start the mole popping logic
+/**
+ * function for the moles to pop up randomly 
+ */
 const startGame = (intervalDuration, popUpDuration) => {
     activeInterval = setInterval(() => {
         // Randomly select a mole to pop up
