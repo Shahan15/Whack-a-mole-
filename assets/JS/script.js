@@ -168,4 +168,20 @@ function resetScore () {
 /**
  * function to reset the game 
  */
+const resetGame = () => {
+    // Clear existing intervals
+    clearInterval(activeInterval);
+    clearInterval(countdownInterval);
 
+    // Reset timer and score
+    remainingTime = 30;
+    elements.countdown.innerText = formatTime(remainingTime);
+    elements.score.innerText = '0';
+
+    // Reset mole states
+    moleIds.forEach((id) => {
+        const mole = document.getElementById(id);
+        mole.style.transform = 'translateY(40px)'; // Reset mole position to hidden
+        mole.setAttribute('data-clicked', 'false'); // Reset clicked state
+    });
+};
