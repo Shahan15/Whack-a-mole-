@@ -17,10 +17,10 @@ const elements = {
 /**
  * assigns easy buttons event listners 
  */
-const modelistners = () =>  {
-    elements.easyButton.addEventListener('click', () => setupGameMode('easy'));
-    elements.mediumButton.addEventListener('click', () => setupGameMode('medium'));
-    elements.hardButton.addEventListener('click', () => setupGameMode('hard'));
+const modeListeners = () =>  {
+    elements.easyButton.addEventListener('click', () => gamemode('easy'));
+    elements.mediumButton.addEventListener('click', () => gamemode('medium'));
+    elements.hardButton.addEventListener('click', () => gamemode('hard'));
 }
 
 /*instead of having multiple handlers doing the same thing i.e. initialising easy mode,medium and hard. 
@@ -48,9 +48,9 @@ const gamemode = (mode) => {
 /**
  * score counter 
  */
-function Updatescore () {
+function updateScore () {
     //10 refers to base 10. if parsed value is invalid the fall back is 0 (that is what the || is doing (falsy))
-    const currentScore = parseInt(elements.score.innerHTML, 10 ) || 0; 
+    const currentScore = parseInt(elements.score.innerText, 10 ) || 0; 
     elements.score.innerText = currentScore + 1 ;
 }
 
@@ -67,14 +67,14 @@ const time = (seconds) => {
 /** 
  * countdown starter 
 */
-const startTimer = (callBack) => {
+const startTimer = (callback) => {
     countdownInterval = setInterval(() => {
         if (remainingTime > 0) {
             remainingTime--;
             elements.countdown.innerText = time(remainingTime); //calls the countdown element from the elements objects from earlier
         } else {
             clearInterval(countdownInterval);
-            if (callBack) callBack(); //this is named callBack as we are passing a function in place of the callBack parameter. So it is a callback function
+            if (callback) callback(); //this is named callBack as we are passing a function in place of the callBack parameter. So it is a callback function
         }
     }, 1000);
 };//when the timer ends we call the function that has been passed in as a parameter i.e. resetGame()
@@ -84,13 +84,13 @@ const startTimer = (callBack) => {
  * Initialise mole click listeners, assigns event listeners for each mole 
  */
 const initialiseMoles = () => {
-    moleIds.forEach((id) => {
+    moleids.forEach((id) => {
         const mole = document.getElementById(id);
         mole.addEventListener('click', (event) => {
             if (event.target.getAttribute('data-clicked') === 'false') {
                 event.target.style.transform = 'translateY(50px)'; // Hide mole when clicked
                 event.target.setAttribute('data-clicked', 'true'); // Mark as clicked
-                Updatescore();  // Increment the score
+                updateScore();  // Increment the score
             }
         });
     });
@@ -103,8 +103,8 @@ const initialiseMoles = () => {
 const startGame = (intervalDuration, popUpDuration) => {
     activeInterval = setInterval(() => {
         // Randomly select a mole to pop up
-        const randomIndex = Math.floor(Math.random() * moleIds.length);
-        const randomMole = document.getElementById(moleIds[randomIndex]);
+        const randomIndex = Math.floor(Math.random() * moleids.length);
+        const randomMole = document.getElementById(moleids[randomIndex]);
         //cannot use a for loop as the that goes in order and we want random selection
 
         // Mole selected pops up 
@@ -127,7 +127,7 @@ const startGame = (intervalDuration, popUpDuration) => {
  */
 const initialiseGame = () => {
     initialiseMoles();  // Add click event listeners to moles
-    modelistners();  // Add click event listeners to mode buttons
+    modeListeners();  // Add click event listeners to mode buttons
     resetGame();  // Reset the game state to start fresh
 }
 
@@ -141,11 +141,11 @@ const resetGame = () => {
 
     // Reset timer and score
     remainingTime = 30;
-    elements.countdown.innerText = formatTime(remainingTime);
+    elements.countdown.innerText = time(remainingTime);
     elements.score.innerText = '0';
 
     // Reset mole states
-    moleIds.forEach((id) => {
+    moleids.forEach((id) => {
         const mole = document.getElementById(id);
         mole.style.transform = 'translateY(40px)'; // Reset mole position to hidden
         mole.setAttribute('data-clicked', 'false'); // Reset clicked state
