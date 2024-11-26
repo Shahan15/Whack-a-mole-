@@ -1,7 +1,7 @@
 /*goes through array of moleids and loops through them and adds 
 eventlisteners for all of them */
 const moleids = ['mole1','mole2','mole3','mole4','mole5'];
-let activeInterval = null;
+let activeInterval = null; 
 let countdownInterval = null;
 let remainingTime = 30; // Default game time in seconds
 
@@ -58,8 +58,9 @@ function molehidingClicked (event) {
  * score counter 
  */
 function Updatescore () {
-    let score = parseInt(document.getElementById('scorenumber').innerHTML );
-    document.getElementById('scorenumber').innerText = score + 1 ;
+    //10 refers to base 10. if parsed value is invalid the fall back is 0 (that is what the || is doing (falsy))
+    const currentScore = parseInt(elements.score.innerHTML, 10 ) || 0; 
+    elements.score.innerText = currentScore + 1 ;
 }
 
 
@@ -82,87 +83,37 @@ const startTimer = (callBack) => {
 };//when the timer ends we call the function that has been passed in as a parameter i.e. resetGame()
 
 
-let easyInt,mediumInt,hardInt;
-
-/**
- *Easy mode 
- */
- function easy() {
-    easyInt  = setInterval(() => { //setInterval executes function on repeat waiting x amount of time in between each time
-        // Selects a random mole. Cannot use for loop as that goes in order.
-        let randomIndex = Math.floor(Math.random() * moleids.length);
-        let randomMole = moleids[randomIndex]; //uses indexed mole to get specific moleid from html doc
-        let htmlMoleId = document.getElementById(randomMole); 
-
-        htmlMoleId.style.transform = "translateY(-10px)"; // Move mole up
-        htmlMoleId.style.transition = "transform 0.2s ease"; // Smooth animation
-        htmlMoleId.setAttribute("data-clicked", "false"); // Reset clicked state
-
-        // Check after 1400ms if it wasn't clicked then go down
-        setTimeout(() => { //setTimeout executes a function after x amount of time 
-            let clickedState = htmlMoleId.getAttribute("data-clicked");
-            if (clickedState === "false") { //checks if the mole has been clicked or not
-                htmlMoleId.style.transform = "translateY(40px)"; // Move mole down
-            }
-        }, 1400); // Timeout before moving mole back down
-    }, 2500); //pops up every 2500ms
-}
 
 
-/**
- * Medium level function
- */
-function medium () {
-    mediumInt= setInterval(() => {
-        let randomIndex = Math.floor(Math.random() * moleids.length);
-        let randomMole = moleids[randomIndex];
-        let htmlMoleId = document.getElementById(randomMole);
 
-        htmlMoleId.style.transform = "translateY(-10px)"; 
-        htmlMoleId.style.transition = "transform 0.2s ease"; 
-        htmlMoleId.setAttribute("data-clicked", "false"); 
 
+
+
+// Function to start the mole popping logic
+const startGame = (intervalDuration, popUpDuration) => {
+    activeInterval = setInterval(() => {
+        // Randomly select a mole to pop up
+        const randomIndex = Math.floor(Math.random() * moleIds.length);
+        const randomMole = document.getElementById(moleIds[randomIndex]);
+        //cannot use a for loop as the that goes in order and we want random selection
+
+        // Mole selected pops up 
+        randomMole.style.transform = 'translateY(-10px)';
+        randomMole.style.transition = 'transform 0.2s ease';
+        randomMole.setAttribute('data-clicked', 'false');
+
+        // Hide the mole after popUpDuration if it wasn't clicked
         setTimeout(() => {
-            let clickedState = htmlMoleId.getAttribute("data-clicked");
-            if (clickedState === "false") {
-                htmlMoleId.style.transform = "translateY(40px)";
+            if (randomMole.getAttribute('data-clicked') === 'false') {
+                randomMole.style.transform = 'translateY(40px)';
             }
-        }, 1300); 
-    }, 1600); // Repeat every 1600ms
-}
-
-/**
- * Hard level function
- */
-function hard () {
-    hardInt=setInterval(() => {
- 
-        let randomIndex = Math.floor(Math.random() * moleids.length);
-        let randomMole = moleids[randomIndex];
-        let htmlMoleId = document.getElementById(randomMole);
-
-        htmlMoleId.style.transform = "translateY(-10px)"; 
-        htmlMoleId.style.transition = "transform 0.2s ease"; 
-        htmlMoleId.setAttribute("data-clicked", "false"); 
-
-        setTimeout(() => {
-            let clickedState = htmlMoleId.getAttribute("data-clicked");
-            if (clickedState === "false") {
-                htmlMoleId.style.transform = "translateY(40px)"; 
-            }
-        }, 1000); // Timeout before moving mole back down
-    }, 1200); // Repeat every 1200ms
-}
+        }, popUpDuration);
+    }, intervalDuration);
+};
 
 
 
-/**
- * Resets the score after one game 
- */
-function resetScore () { 
-    let score = 0;
-    document.getElementById('scorenumber').innerText = score;
-}
+
 
 
 /**
