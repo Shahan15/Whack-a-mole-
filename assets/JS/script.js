@@ -74,6 +74,7 @@ const startTimer = (callback) => {
             elements.countdown.innerText = time(remainingTime); //calls the countdown element from the elements objects from earlier
         } else {
             clearInterval(countdownInterval);
+            alert(`Game Over! you scored ${elements.score.innerText}. Try beat your score!`)
             if (callback) callback(); //this is named callBack as we are passing a function in place of the callBack parameter. So it is a callback function
         }
     }, 1000);
