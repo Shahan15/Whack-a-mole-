@@ -1,3 +1,6 @@
+document.getElementById("playgame").addEventListener('click', () => {
+    window.location.href = "index.html"
+});
 
 /*global variables*/
 const moleids = ['mole1','mole2','mole3','mole4','mole5'];
