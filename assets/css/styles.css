@@ -148,7 +148,11 @@
 
 
 /*play game button*/ 
+
 #playgame {
+    margin: 100px;
+    margin-bottom: 60px;
+    margin-left: 600px;
     font-size: 2rem;
     font-weight: bold;
     font-family: 'Comic Sans MS', cursive, sans-serif;
@@ -158,5 +162,30 @@
     border-radius: 20px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     border: none;
-    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+    transition: background-color 0.3s ease;
+    animation: breathe 2s infinite;
 }
+
+@keyframes breathe {
+    0% {
+      transform: scale(1); /* normal size */
+    }
+    50% {
+      transform: scale(1.1); /* expand */
+    }
+    100% {
+      transform: scale(1); /* back to normal size */
+    }
+}
+
+#title {
+    margin: 100px;
+    margin-left: 400px;
+    margin-top: 100px;
+    height:120px ;
+    width: 600px;
+}
+
+
+
+

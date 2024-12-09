@@ -1,3 +1,4 @@
+
 /*global variables*/
 const moleids = ['mole1','mole2','mole3','mole4','mole5'];
 let activeInterval = null; 
