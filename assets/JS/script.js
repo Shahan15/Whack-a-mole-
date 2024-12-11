@@ -1,7 +1,7 @@
 //redirected to the index.html page when playgame on the title screen is pressed 
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById("playgame").addEventListener('click', () => {
-        window.location.href = "index.html";
+    document.getElementById("index").addEventListener('click', () => {
+        window.location.href = "playgame.html";
     });
 });
 //had to wrap in a DOMContentLoaded as it ensured that the full DOM is constructed before accessing 'playgame' 
