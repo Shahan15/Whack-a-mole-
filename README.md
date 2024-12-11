@@ -104,8 +104,6 @@ Future testing will include:
 
 ### User Stories
 
-### User Stories
-
 #### User Story 1  
 - As a **Casual Gamer**, I want to **engage in a fun and challenging arcade game** so that I can **test and improve my reaction skills**.
 
