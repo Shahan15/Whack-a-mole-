@@ -1,7 +1,11 @@
 //redirected to the index.html page when playgame on the title screen is pressed 
-document.getElementById("playgame").addEventListener('click', () => {
-    window.location.href = "index.html"
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById("playgame").addEventListener('click', () => {
+        window.location.href = "index.html";
+    });
 });
+//had to wrap in a DOMContentLoaded as it ensured that the full DOM is constructed before accessing 'playgame' 
+
 
 /*global variables*/
 const moleids = ['mole1','mole2','mole3','mole4','mole5'];
