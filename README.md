@@ -9,7 +9,7 @@
 - [Testing](#testing)
   - [User Stories](#user-stories)
   - [Validator Testing](#validator-testing)
--[Contact](#contact)
+- [Contact](#contact)
 
 This game is my second project as part of my full stack development boot camp incorporating all of my HTML5, CSS3 and JavaScript learning. It is an online version of a popular arcade game called Whack a Mole where a user clicks a mole that pops up in a set amount of time in different positions. The time the mole reappears and stays up allowing you to click on it is dependent on the game difficulty level: easy, medium and hard. As the difficulty increases the shorter the intervals between the next mole appearing
 
