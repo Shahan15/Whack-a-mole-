@@ -30,7 +30,7 @@ const modeListeners = () =>  {
     elements.easyButton.addEventListener('click', () => gamemode('easy'));
     elements.mediumButton.addEventListener('click', () => gamemode('medium'));
     elements.hardButton.addEventListener('click', () => gamemode('hard'));
-}
+};
 
 /*instead of having multiple handlers doing the same thing i.e. initialising easy mode,medium and hard. 
 we just have a single function -->  gamemode (mode).
@@ -46,13 +46,13 @@ const gamemode = (mode) => {
     if (modes[mode]) {
         resetGame();
         if (confirm(`are you sure you want to start ${mode} mode?`)) {
-            startTimer(resetGame)
+            startTimer(resetGame);
             startGame(modes[mode].interval, modes[mode].duration); // Start game 
         } //modes is the object and mode that we are passing in is the level and its associated interval and duration
     } else {
         console.error('Invalid game mode specified.');
     }
-}
+};
 
 /**
  * score counter 
@@ -71,7 +71,7 @@ const time = (seconds) => {
     const mins = Math.floor(seconds/60);
     const secs = seconds % 60;
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-}
+};
 
 /** 
  * countdown starter 
@@ -83,7 +83,7 @@ const startTimer = (callback) => {
             elements.countdown.innerText = time(remainingTime); //calls the countdown element from the elements objects from earlier
         } else {
             clearInterval(countdownInterval);
-            alert(`Game Over! you scored ${elements.score.innerText}. Try beat your score!`)
+            alert(`Game Over! you scored ${elements.score.innerText}. Try beat your score!`);
             if (callback) callback(); //this is named callBack as we are passing a function in place of the callBack parameter. So it is a callback function
         }
     }, 1000);
@@ -139,7 +139,7 @@ const initialiseGame = () => {
     initialiseMoles();  // Add click event listeners to moles
     modeListeners();  // Add click event listeners to mode buttons
     resetGame();  // Reset the game state to start fresh
-}
+};
 
 /**
  * function to reset the game 
@@ -162,4 +162,4 @@ const resetGame = () => {
     });
 };
 
-initialiseGame()
+initialiseGame();
