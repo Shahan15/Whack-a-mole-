@@ -147,8 +147,7 @@
 }
 
 
-/*play game button*/ 
-
+/*play game button*/
 #index {
     margin: 100px;
     margin-bottom: 60px;
@@ -191,5 +190,59 @@ button {
 }
 
 
+#p {
+    width: 650px;
+    margin-left:400px ;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #fff;
+    background: linear-gradient(to right, #4CAF50, #8BC34A); 
+    padding: 15px 20px;
+    border-radius: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    border: none;
+}
 
+/*tablet responiveness*/ 
+
+@media screen and (max-width: 768px) {
+    #gameboard {
+        left:48%;
+        width: 720px;
+        height: 650px;
+    }
+
+    #scoretext {
+        margin-left: -50px;
+    }
+
+    #countdowntext {
+        margin-right: -90px;
+    }
+
+    #difficulty {
+        top: 16%;
+        right: 15%;
+        transform: translate(-25%, -40%);
+   }
+
+   .mole {
+        height:5.5rem ;
+   }
+   
+   .hole {
+        height: 4rem;
+   }
+
+   .toprow {
+        gap: 40px; 
+        transform: translateX(-110px);
+   }
+
+   .bottomrow {
+        gap: 40px; 
+        transform: translateX(-200px);
+   }
+}
 
