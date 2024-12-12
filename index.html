@@ -11,6 +11,14 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
+
+        @media screen and (max-width: 768px) {
+            body {
+                background-size: contain;
+                background-size: 786px 768px;
+            }
+
+        }
        
     </style>
 </head>
@@ -19,12 +27,12 @@
   
     <img id="title" src="assets/images/whackamoletitle.png" alt="WHACK A MOLE (title)">
 
-    <div>
-        <button id="index">Play game</button>
+    <div id="index">
+        <button>Play game</button>
     </div>
 
     <div id="p">
-        <p>Use your mouse to click all the moles before the time runs out!</p>
+        <p>Click all the moles before the time runs out!</p>
     </div>
     
 

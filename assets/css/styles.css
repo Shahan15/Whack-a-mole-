@@ -149,9 +149,11 @@
 
 /*play game button*/
 #index {
-    margin: 100px;
-    margin-bottom: 60px;
-    margin-left: 600px;
+    display: flex;
+    transform: translate(40%,70%);
+}
+
+#index button {
     font-size: 2rem;
     font-weight: bold;
     font-family: 'Comic Sans MS', cursive, sans-serif;
@@ -191,8 +193,9 @@ button {
 
 
 #p {
-    width: 650px;
-    margin-left:400px ;
+    display: flex;
+    transform: translate(95%,200%);
+    width: 470px;
     font-size: 1.2rem;
     font-weight: bold;
     font-family: 'Comic Sans MS', cursive, sans-serif;
@@ -244,5 +247,29 @@ button {
         gap: 40px; 
         transform: translateX(-200px);
    }
+
+   /*title screen*/
+   #index {
+    margin: 50px;
+    font-size: 1.5rem;
+    padding: 10px 15px;
+    transform: translate(30%, 100%); 
+    }
+
+    #title {
+    margin: 50px;
+    margin-top: 80px;
+    height: 100px; 
+    width: 80%; 
+    }
+
+    #p {
+    width: 80%; 
+    margin: 20px;
+    font-size: 1rem; 
+    padding: 10px 15px; 
+    width: 415px;
+    transform: translate(35%, 225%);
+    }
 }
 
