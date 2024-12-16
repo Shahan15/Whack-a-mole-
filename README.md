@@ -135,7 +135,7 @@ Future testing will include:
 
 Shahan Khan - k.shahan786@gmail.com
 
-Project Link: ((https://github.com/Shahan15/Whack-a-mole-))
+Project Link: (https://github.com/Shahan15/Whack-a-mole-)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
